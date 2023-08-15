@@ -1,8 +1,11 @@
+@model List<BookViewModel>;
 @{
     ViewData["Title"] = "Books";
 }
 
 <div class="text-center">
     <h1 class="display-4">List of books</h1>
-    <p>Books go here</p>
+    @foreach( var book in Model ){
+        <p>@book.Title</p>
+    }
 </div>
