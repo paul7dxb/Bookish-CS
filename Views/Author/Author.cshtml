@@ -5,41 +5,32 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">@Model.Name </h1>
-    @* @if(string.IsNullOrEmpty(Model.CoverPhotoUrl))
+    <h1 class="display-4">@Model.Name </h1>  
+    @if(string.IsNullOrEmpty(Model.PhotoUrl))
     {
         <p>No Cover Photo Set</p>
     }
     else
     {
-        <img src="@Model.CoverPhotoUrl" alt=@Model.Title>
+        <img src="@Model.PhotoUrl" alt=@Model.Name>
     }
 
-    <p>@Model.Author</p>
-
-    @if(string.IsNullOrEmpty(Model.Blurb))
+    @if(string.IsNullOrEmpty(Model.BirthYear.ToString()))
     {
-        <p>No Description Available</p>
+        <p>No Birth Year Available</p>
     }
     else
     {
-        <p>@Model.Blurb</p>
+        <p>Year of birth: @Model.BirthYear</p>
     }
 
-    @if(string.IsNullOrEmpty(Model.Genre))
+    @if(string.IsNullOrEmpty(Model.Bio))
     {
-        <p>No Genre Available</p>
+        <p>No Bio Available</p>
     }
     else
     {
-        <p>@Model.Genre</p>
+        <p>@Model.Bio</p>
     }
-    @if(string.IsNullOrEmpty(Model.YearPublished.ToString()))
-    {
-        <p>No Description Available</p>
-    }
-    else
-    {
-        <p>@Model.YearPublished.ToString()</p>
-    } *@
+    
 </div>
