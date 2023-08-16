@@ -33,7 +33,7 @@ public class AuthorController : Controller
     public IActionResult Author([FromRoute] int authorId)
     {
         AuthorViewModel author = null;
-        var authIndex = Authors.FindIndex(author=> author.AuthorId == authorId);
+        var authIndex = Authors.FindIndex(author=> author.Id == authorId);
         if(authIndex >= 0)
         {
             author = Authors[authIndex];
