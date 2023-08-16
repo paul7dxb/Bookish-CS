@@ -1,0 +1,22 @@
+@model List<UserViewModel>;
+@{
+    ViewData["Title"] = "Users";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Authors</h1>
+    <ul>
+        @foreach( var user in Model )
+        {
+            <li>
+                <a 
+                asp-controller="User" 
+                asp-action="User"
+                asp-route-UserId="@user.Id">
+                    @user.Name
+                </a>
+            </li>
+        }
+    </ul>
+    
+</div>
