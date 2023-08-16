@@ -9,7 +9,7 @@ public class AuthorController : Controller
 {
     private List<AuthorViewModel> Authors = new List<AuthorViewModel>
     {
-        new AuthorViewModel(1, "J.R.R Tolkien")
+        new AuthorViewModel(1, "J.R.R. Tolkien")
         {
             BirthYear = 1892,
             PhotoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/J._R._R._Tolkien%2C_ca._1925.jpg/220px-J._R._R._Tolkien%2C_ca._1925.jpg",

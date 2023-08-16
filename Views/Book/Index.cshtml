@@ -5,7 +5,17 @@
 
 <div class="text-center">
     <h1 class="display-4">List of books</h1>
-    @foreach( var book in Model ){
-        <p>@book.Title</p>
-    }
+    <ul>
+        @foreach( var book in Model )
+        {
+            <li>
+                <a 
+                asp-controller="Book" 
+                asp-action="Book"
+                asp-route-isbn="@book.Isbn">
+                    @book.Title
+                </a>
+            </li>
+        }
+    </ul>
 </div>
