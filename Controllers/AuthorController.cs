@@ -1,6 +1,8 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Bookish.Models;
+using Bookish.Repositories;
+using Bookish.Models.Database;
 
 namespace Bookish.Controllers;
 
@@ -23,10 +25,14 @@ public class AuthorController : Controller
         },
     };
 
+    AuthorRepo authorRepo = new AuthorRepo();
+
     [HttpGet("")]
     public IActionResult Index()
     {
-        return View(Authors);
+        List<AuthorModel> authors = authorRepo.GetAllAuthors();
+
+        return View(authors.Select(author => new AuthorViewModel(author)));
     }
 
     [HttpGet("{AuthorId}")]

@@ -3,6 +3,7 @@ using System;
 using Bookish;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Bookish.Migrations
 {
     [DbContext(typeof(BookishDBContext))]
-    partial class BookishDBContextModelSnapshot : ModelSnapshot
+    [Migration("20230816134013_BookCopy")]
+    partial class BookCopy
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -60,21 +63,6 @@ namespace Bookish.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Authors");
-                });
-
-            modelBuilder.Entity("Bookish.Models.Database.BookCopyModel", b =>
-                {
-                    b.Property<string>("Barcode")
-                        .HasColumnType("text");
-
-                    b.Property<string>("BookIsbn")
-                        .HasColumnType("text");
-
-                    b.HasKey("Barcode");
-
-                    b.HasIndex("BookIsbn");
-
-                    b.ToTable("Copies");
                 });
 
             modelBuilder.Entity("Bookish.Models.Database.BookModel", b =>
@@ -137,15 +125,6 @@ namespace Bookish.Migrations
                         .HasForeignKey("BooksIsbn")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("Bookish.Models.Database.BookCopyModel", b =>
-                {
-                    b.HasOne("Bookish.Models.Database.BookModel", "Book")
-                        .WithMany()
-                        .HasForeignKey("BookIsbn");
-
-                    b.Navigation("Book");
                 });
 #pragma warning restore 612, 618
         }

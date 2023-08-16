@@ -1,5 +1,7 @@
 namespace Bookish.Models;
 
+using Bookish.Models.Database;
+
 public class AuthorViewModel
 {
     public int Id { get; }
@@ -11,5 +13,12 @@ public class AuthorViewModel
     public AuthorViewModel(int id, string name){
         Id = id;
         Name = name;
+    }
+    public AuthorViewModel(AuthorModel authorModel){
+        Id = authorModel.Id;
+        Name = authorModel.Name;
+        BirthYear = authorModel.BirthYear;
+        PhotoUrl = authorModel.PhotoUrl;
+        Bio = authorModel.Bio;
     }
 }

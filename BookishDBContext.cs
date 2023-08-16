@@ -9,6 +9,7 @@ namespace Bookish
         public DbSet<BookModel> Books { get; set; }
         public DbSet<UserModel> Users { get; set; }
         public DbSet<AuthorModel> Authors { get; set; }
+        public DbSet<BookCopyModel> Copies { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         { 
