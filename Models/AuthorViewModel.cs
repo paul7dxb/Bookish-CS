@@ -4,8 +4,8 @@ using Bookish.Models.Database;
 
 public class AuthorViewModel
 {
-    public int Id { get; }
-    public string Name { get; }
+    public int? Id { get; }
+    public string? Name { get; }
     public int? BirthYear { get; set;}
     public string? PhotoUrl { get; set;}
     public string? Bio { get;  set;}

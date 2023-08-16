@@ -1,7 +1,22 @@
+using Bookish.Models.Database;
+
 namespace Bookish.Models;
 
 public class BookViewModel
 {
+
+    public class BookAuthorViewModel
+    {
+        public int? Id { get; set; }
+        public string? Name { get; set; }
+
+        public BookAuthorViewModel(AuthorModel author)
+        {
+            Id = author.Id;
+            Name = author.Name;
+        }
+    }
+
     public string Isbn { get; }
     public string Title { get; }
     public string Author { get; }

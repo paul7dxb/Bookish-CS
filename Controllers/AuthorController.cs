@@ -25,12 +25,11 @@ public class AuthorController : Controller
         },
     };
 
-    AuthorRepo authorRepo = new AuthorRepo();
 
     [HttpGet("")]
     public IActionResult Index()
     {
-        List<AuthorModel> authors = authorRepo.GetAllAuthors();
+        List<AuthorModel> authors = AuthorRepo.GetAllAuthors();
 
         return View(authors.Select(author => new AuthorViewModel(author)));
     }
