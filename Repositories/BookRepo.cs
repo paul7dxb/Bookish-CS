@@ -20,11 +20,11 @@ public class BookRepo
             .ToList();
     }
 
-    public List<BookModel> GetBookByIsbn(string isbn)
+    public BookModel GetBookByIsbn(string isbn)
     {
         return _context.Books
             .Include(b => b.Authors)
             .Where(b => b.Isbn == isbn)
-            .ToList();
+            .Single();
     }
 }

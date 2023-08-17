@@ -9,6 +9,13 @@ namespace Bookish.Controllers;
 [Route("authors")]
 public class AuthorController : Controller
 {
+
+    private readonly AuthorRepo _authorRepo;
+
+    public AuthorController(AuthorRepo authorRepo){
+        _authorRepo = authorRepo;
+    }
+
     private List<AuthorViewModel> Authors = new List<AuthorViewModel>
     {
         new AuthorViewModel(1, "J.R.R. Tolkien")
@@ -29,7 +36,7 @@ public class AuthorController : Controller
     [HttpGet("")]
     public IActionResult Index()
     {
-        List<AuthorModel> authors = AuthorRepo.GetAllAuthors();
+        List<AuthorModel> authors = _authorRepo.GetAllAuthors();
 
         return View(authors.Select(author => new AuthorViewModel(author)));
     }
