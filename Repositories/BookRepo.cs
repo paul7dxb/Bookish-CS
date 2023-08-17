@@ -8,7 +8,7 @@ public interface IBookRepo
     public List<BookModel> GetAllBooks();
     public BookModel GetBookByIsbn(string isbn);
 
-    public void AddBook(BookViewModel newBook, int noOfCopies);
+    //public void AddBook(BookViewModel newBook, int noOfCopies);
 
     // public void EditBook()
 }
@@ -37,9 +37,9 @@ public class BookRepo : IBookRepo
             .Single();
     }
 
-    public void AddBook(BookViewModel newBook, int noOfCopies)
-    {
-        _context.Books
-    }
+    // public void AddBook(BookViewModel newBook, int noOfCopies)
+    // {
+    //     _context.Books;
+    // }
 
 }

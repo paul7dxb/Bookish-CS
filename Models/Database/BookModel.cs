@@ -13,6 +13,6 @@ public class BookModel
     public string? Genre { get; set;}
     public int? YearPublished { get; set; }
 
-    public List<AuthorModel> Authors { get; set; }
+    public List<AuthorModel>? Authors { get; set; }
 
 }

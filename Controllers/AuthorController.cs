@@ -10,9 +10,9 @@ namespace Bookish.Controllers;
 public class AuthorController : Controller
 {
 
-    private readonly AuthorRepo _authorRepo;
+    private readonly IAuthorRepo _authorRepo;
 
-    public AuthorController(AuthorRepo authorRepo){
+    public AuthorController(IAuthorRepo authorRepo){
         _authorRepo = authorRepo;
     }
 
@@ -38,23 +38,15 @@ public class AuthorController : Controller
     {
         List<AuthorModel> authors = _authorRepo.GetAllAuthors();
 
-        return View(authors.Select(author => new AuthorViewModel(author)));
+        return View(authors.Select(author => new AuthorViewModel(author)).ToList());
     }
 
     [HttpGet("{AuthorId}")]
     public IActionResult Author([FromRoute] int authorId)
     {
-        AuthorViewModel author = null;
-        var authIndex = Authors.FindIndex(author=> author.Id == authorId);
-        if(authIndex >= 0)
-        {
-            author = Authors[authIndex];
-        }
-        else
-        {
-            return NotFound();
-        };
-        
-        return View(author);
+
+        AuthorModel author = _authorRepo.GetAuthorById(authorId);
+              
+        return View(new AuthorViewModel(author));
     }
 }
