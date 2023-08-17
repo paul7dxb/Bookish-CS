@@ -3,8 +3,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Bookish.Repositories;
 
+public interface IBookRepo
+{
+    public List<BooksModel> GetAllBooks();
+    public BookModel GetBookByIsbn(string isbn);
+}
 
-public class BookRepo
+public class BookRepo : IBookRepo
 {
 
     private readonly BookishDBContext _context;
