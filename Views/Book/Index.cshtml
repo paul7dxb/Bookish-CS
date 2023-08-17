@@ -23,11 +23,13 @@
                         <img src="@book.CoverPhotoUrl" alt="@book.Title">
                         <div class="card-body">
                             <p class="card-text">
-                                @book.Author
+                                @foreach( var author in book.Authors )
+                                {
+                                    @author.Name
+                                }
                             </p>
                         </div>
                     </div>
-
                 </li>
             }
         </ul>

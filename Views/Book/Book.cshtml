@@ -20,7 +20,10 @@
     </div>
     <div class="col">
         <h1 class="display-4">@Model.Title </h1>
-        <p>@Model.Author</p>
+        @foreach( var author in Model.Authors )
+        {
+            <p>@author.Name</p>
+        }
         @if(string.IsNullOrEmpty(Model.Blurb))
         {
             <p>No Description Available</p>

@@ -20,17 +20,28 @@ public class BookViewModel
         }
     }
 
-    public string Isbn { get; }
-    public string Title { get; }
-    public string Author { get; }
+    public string? Isbn { get; }
+    public string? Title { get; }
+    public List<BookAuthorViewModel>? Authors { get; }
     public string? CoverPhotoUrl { get;  set;}
     public string? Blurb { get; set; }
     public string? Genre { get; set;}
     public int? YearPublished { get; set; }
 
-    public BookViewModel(string isbn, string title, string author){
-        Isbn = isbn;
-        Title = title;
-        Author = author;
+    // public BookViewModel(string isbn, string title, string author){
+    //     Isbn = isbn;
+    //     Title = title;
+    //     Authors = author;
+    // }
+
+    public BookViewModel(BookModel bookModel)
+    {
+        Isbn = bookModel.Isbn;
+        Title = bookModel.Title;
+        Authors = bookModel.Authors.Select(author => new BookAuthorViewModel(author)).ToList();
+        CoverPhotoUrl = bookModel.CoverPhotoUrl;
+        Blurb = bookModel.Blurb;
+        Genre = bookModel.Genre;
+        YearPublished = bookModel.YearPublished;
     }
 }
