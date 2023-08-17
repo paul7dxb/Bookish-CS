@@ -5,17 +5,31 @@
 
 <div class="text-center">
     <h1 class="display-4">List of books</h1>
-    <ul>
-        @foreach( var book in Model )
-        {
-            <li>
-                <a 
-                asp-controller="Book" 
-                asp-action="Book"
-                asp-route-isbn="@book.Isbn">
-                    @book.Title
-                </a>
-            </li>
-        }
-    </ul>
+    <div class="container">
+        <ul class="row row-cols-4">
+            @foreach( var book in Model )
+            {
+
+                <li class="col p-2" style="list-style: none;">
+                    <div class="card">
+                        <div class="card-body">
+                            <a 
+                                asp-controller="Book" 
+                                asp-action="Book"
+                                asp-route-isbn="@book.Isbn">
+                                @book.Title
+                            </a>
+                        </div>
+                        <img src="@book.CoverPhotoUrl" alt="@book.Title">
+                        <div class="card-body">
+                            <p class="card-text">
+                                @book.Author
+                            </p>
+                        </div>
+                    </div>
+
+                </li>
+            }
+        </ul>
+    </div>
 </div>

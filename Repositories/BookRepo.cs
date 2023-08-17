@@ -5,7 +5,7 @@ namespace Bookish.Repositories;
 
 public interface IBookRepo
 {
-    public List<BooksModel> GetAllBooks();
+    public List<BookModel> GetAllBooks();
     public BookModel GetBookByIsbn(string isbn);
 }
 

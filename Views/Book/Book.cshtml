@@ -4,42 +4,54 @@
     ViewData["Title"] = "A Book";
 }
 
-<div class="text-center">
-    <h1 class="display-4">@Model.Title </h1>
-    @if(string.IsNullOrEmpty(Model.CoverPhotoUrl))
-    {
-        <p>No Cover Photo Set</p>
-    }
-    else
-    {
-        <img src="@Model.CoverPhotoUrl" alt=@Model.Title>
-    }
+<div class="row">
+    <div class="col">
+        @if(string.IsNullOrEmpty(Model.CoverPhotoUrl))
+        {
+            <p>No Cover Photo Set</p>
+        }
+        else
+        {
+            <img 
+                src="@Model.CoverPhotoUrl"
+                alt=@Model.Title 
+                style="width: 100%; max-height: 80vh; object-fit: contain;">
+        }
+    </div>
+    <div class="col">
+        <h1 class="display-4">@Model.Title </h1>
+        <p>@Model.Author</p>
+        @if(string.IsNullOrEmpty(Model.Blurb))
+        {
+            <p>No Description Available</p>
+        }
+        else
+        {
+            <p>@Model.Blurb</p>
+        }
 
-    <p>@Model.Author</p>
+        @if(string.IsNullOrEmpty(Model.Genre))
+        {
+            <p>No Genre Available</p>
+        }
+        else
+        {
+            <p>@Model.Genre</p>
+        }
+        @if(string.IsNullOrEmpty(Model.YearPublished.ToString()))
+        {
+            <p>No Description Available</p>
+        }
+        else
+        {
+            <p>@Model.YearPublished.ToString()</p>
+        }
+    </div>
 
-    @if(string.IsNullOrEmpty(Model.Blurb))
-    {
-        <p>No Description Available</p>
-    }
-    else
-    {
-        <p>@Model.Blurb</p>
-    }
 
-    @if(string.IsNullOrEmpty(Model.Genre))
-    {
-        <p>No Genre Available</p>
-    }
-    else
-    {
-        <p>@Model.Genre</p>
-    }
-    @if(string.IsNullOrEmpty(Model.YearPublished.ToString()))
-    {
-        <p>No Description Available</p>
-    }
-    else
-    {
-        <p>@Model.YearPublished.ToString()</p>
-    }
+
+
+
+
+
 </div>

@@ -9,11 +9,14 @@ public class BookViewModel
     {
         public int? Id { get; set; }
         public string? Name { get; set; }
+        public string? PhotoUrl { get; set;}
+
 
         public BookAuthorViewModel(AuthorModel author)
         {
             Id = author.Id;
             Name = author.Name;
+            PhotoUrl = author.PhotoUrl;
         }
     }
 
