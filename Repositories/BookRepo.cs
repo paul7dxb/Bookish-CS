@@ -7,6 +7,10 @@ public interface IBookRepo
 {
     public List<BookModel> GetAllBooks();
     public BookModel GetBookByIsbn(string isbn);
+
+    public void AddBook(BookViewModel newBook, int noOfCopies);
+
+    // public void EditBook()
 }
 
 public class BookRepo : IBookRepo
@@ -32,4 +36,10 @@ public class BookRepo : IBookRepo
             .Where(b => b.Isbn == isbn)
             .Single();
     }
+
+    public void AddBook(BookViewModel newBook, int noOfCopies)
+    {
+        _context.Books
+    }
+
 }

@@ -6,31 +6,23 @@
 
 <div class="text-center">
     <h1 class="display-4">@Model.Name </h1>  
-    @* @if(string.IsNullOrEmpty(Model.PhotoUrl))
+    @if(string.IsNullOrEmpty(Model.Email))
     {
-        <p>No Cover Photo Set</p>
+        <p>No Email Set</p>
     }
     else
     {
-        <img src="@Model.PhotoUrl" alt=@Model.Name>
+        <p>email address: @Model.Email</p>
     }
 
-    @if(string.IsNullOrEmpty(Model.BirthYear.ToString()))
+    @if(string.IsNullOrEmpty(Model.DateSignedUp.ToString()))
     {
-        <p>No Birth Year Available</p>
+        <p>No Date Signed Up Available</p>
     }
     else
     {
-        <p>Year of birth: @Model.BirthYear</p>
+        <p>Date Signed Up: @Model.DateSignedUp.ToString()</p>
     }
 
-    @if(string.IsNullOrEmpty(Model.Bio))
-    {
-        <p>No Bio Available</p>
-    }
-    else
-    {
-        <p>@Model.Bio</p>
-    } *@
     
 </div>
