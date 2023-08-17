@@ -1,46 +1,31 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Bookish.Models;
+using Bookish.Repositories;
+using Bookish.Models.Database;
 
 namespace Bookish.Controllers;
 
 [Route("users")]
 public class UserController : Controller
 {
-    private List<UserViewModel> Users = new List<UserViewModel>
-    {
-        new UserViewModel(1, "Paul")
-        {
-            Email = "paul@email.com",
-            DateSignedUp = DateTime.Now ,
-        },
-        new UserViewModel(2, "Bill")
-        {
-            Email = "bill@email.com",
-            DateSignedUp = DateTime.Now ,
-        },
-    };
+    private readonly IUserRepo _userRepo;
+
+        public UserController(IUserRepo userRepo){
+            _userRepo = userRepo;
+        }
 
     [HttpGet("")]
     public IActionResult Index()
     {
-        return View(Users);
+        List<UserModel> users = _userRepo.GetAllUsers();
+        return View(users.Select(user => new UserViewModel(user)).ToList());
     }
 
     [HttpGet("{UserId}")]
     public IActionResult User([FromRoute] int userId)
     {
-        UserViewModel user = null;
-        var userIndex = Users.FindIndex(user=> user.Id == userId);
-        if(userIndex >= 0)
-        {
-            user = Users[userIndex];
-        }
-        else
-        {
-            return NotFound();
-        };
-        
-        return View(user);
+        UserModel user = _userRepo.GetUserById(userId);
+        return View(new UserViewModel(user));
     }
 }
