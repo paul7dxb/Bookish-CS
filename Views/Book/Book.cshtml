@@ -23,12 +23,27 @@
         <div style="width: 100%;">
             @foreach( var author in Model.Authors )
             {
-                <div style="display: inline-block ;">
-                    <img 
-                    src="@author.PhotoUrl"
-                    alt=@author.Name 
-                    style="width: 20%; border-radius:50%; max-height: 80vh; object-fit: contain;">
-                    <p style="display: inline-block ;">@author.Name</p>
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                        <div class="col-md-2">
+                            <img 
+                                src="@author.PhotoUrl"
+                                alt=@author.Name 
+                                class="img-fluid rounded-start">
+                        </div>
+                        <div class="col-md-8">
+                            <div style="margin-left: 1rem; height: 100%; display: flex; flex-direction: column; justify-content: center; ">
+                                <p class="h4">@author.Name</p>
+                                <a 
+                                    asp-controller="Author" 
+                                    asp-action="Author"
+                                    asp-route-authorid="@author.Id">
+                                        More from this author
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             }  
         </div>
