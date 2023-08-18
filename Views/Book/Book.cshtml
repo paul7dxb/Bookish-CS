@@ -73,6 +73,14 @@
         {
             <p>@Model.YearPublished.ToString()</p>
         }
+        @if( Model.Copies == null)
+        {
+            <p>No Knowledge of Copies</p>
+        }
+        else
+        {
+            <p>Number of copies library has: @Model.Copies.ToString()</p>
+        }
     </div>
 
 

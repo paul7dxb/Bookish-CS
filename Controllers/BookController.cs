@@ -10,9 +10,11 @@ namespace Bookish.Controllers;
 public class BookController : Controller
 {
     private readonly IBookRepo _bookRepo;
+    private readonly IBookCopyRepo _bookCopyRepo;
 
-    public BookController(IBookRepo bookRepo){
+    public BookController(IBookRepo bookRepo, IBookCopyRepo bookCopyRepo ){
         _bookRepo = bookRepo;
+        _bookCopyRepo = bookCopyRepo;
     }
 
     [HttpGet("")]
@@ -25,7 +27,9 @@ public class BookController : Controller
     [HttpGet("{isbn}")]
     public IActionResult Book([FromRoute] string isbn)
     {
-        BookModel book = _bookRepo.GetBookByIsbn(isbn);
-        return View(new BookViewModel(book));
+        BookModel bookModel = _bookRepo.GetBookByIsbn(isbn);
+        int copies = _bookCopyRepo.GetAllCopies(isbn).Count;
+        var book = new BookViewModel(bookModel, copies);
+        return View(book);
     }
 }

@@ -28,6 +28,8 @@ public class BookViewModel
     public string? Genre { get; set;}
     public int? YearPublished { get; set; }
 
+    public int? Copies { get; set; }
+
     // public BookViewModel(string isbn, string title, string author){
     //     Isbn = isbn;
     //     Title = title;
@@ -43,5 +45,17 @@ public class BookViewModel
         Blurb = bookModel.Blurb;
         Genre = bookModel.Genre;
         YearPublished = bookModel.YearPublished;
+    }
+    
+    public BookViewModel(BookModel bookModel, int copies)
+    {
+        Isbn = bookModel.Isbn;
+        Title = bookModel.Title;
+        Authors = bookModel.Authors.Select(author => new BookAuthorViewModel(author)).ToList();
+        CoverPhotoUrl = bookModel.CoverPhotoUrl;
+        Blurb = bookModel.Blurb;
+        Genre = bookModel.Genre;
+        YearPublished = bookModel.YearPublished;
+        Copies = copies;
     }
 }

@@ -8,6 +8,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddTransient<IBookRepo, BookRepo>();
 builder.Services.AddTransient<IAuthorRepo, AuthorRepo>();
 builder.Services.AddTransient<IUserRepo, UserRepo>();
+builder.Services.AddTransient<IBookCopyRepo, BookCopyRepo>();
 builder.Services.AddDbContext<BookishDBContext>();
 
 var app = builder.Build();
