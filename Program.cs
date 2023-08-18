@@ -10,7 +10,6 @@ builder.Services.AddTransient<IAuthorRepo, AuthorRepo>();
 builder.Services.AddTransient<IUserRepo, UserRepo>();
 builder.Services.AddDbContext<BookishDBContext>();
 
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

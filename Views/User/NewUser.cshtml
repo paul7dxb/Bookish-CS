@@ -1,0 +1,18 @@
+@model UserViewModel;
+
+@{
+    ViewData["Title"] = "New User";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Create User</h1>  
+     <form action="newuser" method="post">
+        <label for="Name">First name:</label><br>
+        <input type="text" id="Name" name="Name" value="John"><br>
+        <label for="Email">Email:</label><br>
+        <input type="email" id="Email" name="Email" value="Doe"><br><br>
+        <input type="submit" value="Submit">
+    </form> 
+
+    
+</div>

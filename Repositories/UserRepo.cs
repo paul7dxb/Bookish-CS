@@ -8,7 +8,7 @@ public interface IUserRepo
     public List<UserModel> GetAllUsers();
     public UserModel GetUserById(int id);
 
-    //public void AddUser(string name, string email);
+    public void AddUser(string name, string email);
     //public void EditUser(string name, string email);
 }
 
@@ -32,10 +32,21 @@ public class UserRepo : IUserRepo
             .Single();
     }
 
-    // public void AddUser(string name, string email){
-    //     // _context.Users.Add()
-    // }
-    // public void AddUser(string name, string email){
-    //     // _context.Users
-    // }
+    public void AddUser(string name, string email){
+
+        // DateTime now = DateTime.Now;
+        // now.Value.SetKindUtc();
+        
+        var userData = new UserModel(){
+            Id = null,
+            DateSignedUp = DateTime.UtcNow ,
+            Name = name,
+            Email = email
+        };
+
+        _context.Users.Add(userData);
+
+        _context.SaveChanges();
+    }
+
 }

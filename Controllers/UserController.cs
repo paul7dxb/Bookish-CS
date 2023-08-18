@@ -28,4 +28,27 @@ public class UserController : Controller
         UserModel user = _userRepo.GetUserById(userId);
         return View(new UserViewModel(user));
     }
+
+    [HttpGet("newuser")]
+    public IActionResult NewUser() { 
+        return View();
+    }
+
+
+    [HttpPost("newuser")]
+    public HttpResponseMessage CreateUser(IFormCollection collection) { 
+        
+        string? formName = collection["Name"];
+        string? formEmail = collection["Email"];
+
+        if(string.IsNullOrEmpty(formName)){
+            formName = "noName";
+        }
+        if(string.IsNullOrEmpty(formEmail)){
+            formEmail = "noEmail";
+        }
+
+        _userRepo.AddUser(formName, formEmail);
+        return new HttpResponseMessage(System.Net.HttpStatusCode.OK);
+    }
 }
