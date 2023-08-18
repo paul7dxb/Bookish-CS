@@ -5,6 +5,10 @@
 
 <div class="text-center">
     <h1 class="display-4">Users</h1>
+    <a 
+        asp-controller="User" 
+        asp-action="NewUser"> Create New User
+    </a>
     <ul>
         @foreach( var user in Model )
         {

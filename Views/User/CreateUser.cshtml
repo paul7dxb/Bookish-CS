@@ -1,0 +1,37 @@
+@model bool;
+
+@{
+    ViewData["Title"] = "New User";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Create User</h1> 
+
+    @if(Model)
+    {
+        <div class="alert alert-success" role="alert">
+            User Successfully Created!
+        </div>
+
+        @* <h2>User Created</h2> *@
+        <a class="" asp-area="" asp-controller="User" asp-action="Index">View Users</a>
+    } else 
+    {
+        <div class="alert alert-danger" role="alert">
+            Error Creating User
+        </div>
+
+        @* <h2>Error Creating User</h2> *@
+        <form action="newuser" method="post">
+            <label for="Name">First name:</label><br>
+            <input type="text" id="Name" name="Name" value="John"><br>
+            <label for="Email">Email:</label><br>
+            <input type="email" id="Email" name="Email" value="Doe@email.com"><br><br>
+            <input type="submit" value="Submit">
+        </form> 
+    }
+
+
+
+    
+</div>

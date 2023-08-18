@@ -8,7 +8,7 @@ public interface IUserRepo
     public List<UserModel> GetAllUsers();
     public UserModel GetUserById(int id);
 
-    public void AddUser(string name, string email);
+    public HttpResponseMessage AddUser(string name, string email);
     //public void EditUser(string name, string email);
 }
 
@@ -32,10 +32,7 @@ public class UserRepo : IUserRepo
             .Single();
     }
 
-    public void AddUser(string name, string email){
-
-        // DateTime now = DateTime.Now;
-        // now.Value.SetKindUtc();
+    public HttpResponseMessage AddUser(string name, string email){
         
         var userData = new UserModel(){
             Id = null,
@@ -44,9 +41,18 @@ public class UserRepo : IUserRepo
             Email = email
         };
 
-        _context.Users.Add(userData);
+        try{
+            _context.Users.Add(userData);
 
-        _context.SaveChanges();
+            _context.SaveChanges(); 
+        }catch(Exception e)
+        {
+            Console.WriteLine(e.ToString());
+            return new HttpResponseMessage(System.Net.HttpStatusCode.BadRequest);
+        }    
+
+        return new HttpResponseMessage(System.Net.HttpStatusCode.OK);
+        
     }
 
 }

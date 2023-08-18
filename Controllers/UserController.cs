@@ -36,7 +36,7 @@ public class UserController : Controller
 
 
     [HttpPost("newuser")]
-    public HttpResponseMessage CreateUser(IFormCollection collection) { 
+    public IActionResult CreateUser(IFormCollection collection) { 
         
         string? formName = collection["Name"];
         string? formEmail = collection["Email"];
@@ -48,7 +48,13 @@ public class UserController : Controller
             formEmail = "noEmail";
         }
 
-        _userRepo.AddUser(formName, formEmail);
-        return new HttpResponseMessage(System.Net.HttpStatusCode.OK);
+        HttpResponseMessage response = _userRepo.AddUser(formName, formEmail);
+
+        if(response.IsSuccessStatusCode)
+        {
+            return View(true);
+        }
+
+        return View(false);
     }
 }
